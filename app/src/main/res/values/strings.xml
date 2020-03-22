@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WindowInsets</string>
+    <string name="input_label">Input:</string>
+
+    <string name="caption_bar">Caption Bar</string>
+    <string name="ime">IME</string>
+    <string name="mandatory_system_gestures">Mandatory System Gestures</string>
+    <string name="status_bars">Status Bars</string>
+    <string name="system_bars">System Bars</string>
+    <string name="system_gestures">System Gestures</string>
+    <string name="tappable_element">Tappable Element</string>
+    <string name="decor_fit_system_windows">Decor Fit System Windows</string>
+</resources>

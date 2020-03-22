@@ -1,0 +1,60 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion AndroidSdk.compile
+    defaultConfig {
+        applicationId "com.stylingandroid.windowinsets"
+        minSdkVersion AndroidSdk.min
+        targetSdkVersion AndroidSdk.target
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+    buildFeatures.viewBinding = true
+}
+
+dependencies {
+    implementation Libraries.kotlinStdLib
+    implementation Libraries.appCompat
+    implementation Libraries.ktxCore
+    implementation Libraries.constraintLayout
+    implementation Libraries.vectorDrawable
+    implementation Libraries.animatedVectorDrawable
+}
+
+detekt {
+    version = "1.0.0"
+    failFast = true
+    reports {
+        xml {
+            destination = file("$project.buildDir/reports/detekt/detekt.xml")
+        }
+    }
+}
+
+ktlint {
+    android = true
+    version = "0.36.0"
+    ignoreFailures = false
+    reporters {
+        reporter "plain"
+        reporter "checkstyle"
+    }
+    outputToConsole = true
+}
