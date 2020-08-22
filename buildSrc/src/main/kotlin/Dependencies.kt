@@ -1,8 +1,8 @@
-const val kotlinVersion = "1.3.70"
+const val kotlinVersion = "1.4.0"
 
 object BuildPlugins {
     object Version {
-        const val androidBuildToolsVersion = "4.1.0-alpha03"
+        const val androidBuildToolsVersion = "4.2.0-alpha07"
     }
 
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Version.androidBuildToolsVersion}"
@@ -14,18 +14,19 @@ object BuildPlugins {
 }
 
 object AndroidSdk {
-    const val min = "R"
-    const val compile = "android-R"
-    const val target = "R"
+    const val min = 21
+    const val compile = 30
+    const val target = compile
 }
 
 
 object Libraries {
     private object Versions {
-        const val appCompat = "1.2.0-alpha03"
-        const val ktx = "1.3.0-alpha02"
-        const val constraintLayout = "2.0.0-beta4"
-        const val vectorDrawable = "1.1.0"
+        const val appCompat = "1.3.0-alpha02"
+        const val ktx = "1.5.0-alpha02"
+        const val constraintLayout = "2.0.0"
+        const val vectorDrawable = "1.2.0-alpha02"
+        const val animatedVectorDrawable = "1.1.0"
     }
 
     const val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
@@ -33,5 +34,5 @@ object Libraries {
     const val ktxCore = "androidx.core:core-ktx:${Versions.ktx}"
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val vectorDrawable = "androidx.vectordrawable:vectordrawable:${Versions.vectorDrawable}"
-    const val animatedVectorDrawable = "androidx.vectordrawable:vectordrawable-animated:${Versions.vectorDrawable}"
+    const val animatedVectorDrawable = "androidx.vectordrawable:vectordrawable-animated:${Versions.animatedVectorDrawable}"
 }

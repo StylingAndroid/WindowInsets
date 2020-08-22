@@ -2,10 +2,12 @@ package com.stylingandroid.windowinsets
 
 import android.os.Bundle
 import android.view.ViewGroup
-import android.view.WindowInsets
-import android.view.WindowInsets.Type
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsCompat.Type
 import androidx.core.view.updateLayoutParams
 import androidx.core.view.updateMargins
 import com.stylingandroid.windowinsets.databinding.ActivityMainBinding
@@ -15,14 +17,17 @@ class MainActivity : AppCompatActivity() {
     private val currentInsetTypes = mutableSetOf<Int>()
     private lateinit var binding: ActivityMainBinding
 
+    private var currentWindowInsets: WindowInsetsCompat = WindowInsetsCompat.Builder().build()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        window.setDecorFitsSystemWindows(false)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.root.setOnApplyWindowInsetsListener { _, _ ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, windowInsets ->
+            currentWindowInsets = windowInsets
             applyInsets()
         }
 
@@ -37,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         binding.toggleDecorFitSystemWindows.setOnCheckedChangeListener { _, checked ->
-            window.setDecorFitsSystemWindows(checked)
+            WindowCompat.setDecorFitsSystemWindows(window, checked)
             binding.insetTypes.isEnabled = checked
             if (checked) {
                 itemTypes.forEach { checkBox ->
@@ -72,15 +77,15 @@ class MainActivity : AppCompatActivity() {
         applyInsets()
     }
 
-    private fun applyInsets(): WindowInsets {
+    private fun applyInsets(): WindowInsetsCompat {
         val currentInsetTypeMask = currentInsetTypes.fold(0) { accumulator, type ->
             accumulator or type
         }
-        val insets = binding.root.rootWindowInsets.getInsets(currentInsetTypeMask)
+        val insets = currentWindowInsets.getInsets(currentInsetTypeMask)
         binding.root.updateLayoutParams<ViewGroup.MarginLayoutParams> {
             updateMargins(insets.left, insets.top, insets.right, insets.bottom)
         }
-        return WindowInsets.Builder()
+        return WindowInsetsCompat.Builder()
             .setInsets(currentInsetTypeMask, insets)
             .build()
     }

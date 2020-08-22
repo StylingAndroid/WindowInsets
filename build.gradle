@@ -16,9 +16,10 @@ buildscript {
 }
 
 plugins {
-    id 'com.github.ben-manes.versions' version '0.28.0'
-    id 'io.gitlab.arturbosch.detekt' version "1.7.0-beta2"
-    id 'org.jlleitschuh.gradle.ktlint' version '9.2.1'
+    id 'com.github.ben-manes.versions' version '0.29.0'
+    id 'io.gitlab.arturbosch.detekt' version "1.12.0-RC1"
+    id 'org.jlleitschuh.gradle.ktlint' version '9.3.0'
+    id "com.github.plnice.canidropjetifier" version "0.5"
 }
 
 subprojects {
