@@ -10,4 +10,6 @@
     <string name="system_gestures">System Gestures</string>
     <string name="tappable_element">Tappable Element</string>
     <string name="decor_fit_system_windows">Decor Fit System Windows</string>
+    <string name="display_cutout">Display Cutout</string>
+    <string name="navigation_bars">Navigation Bars</string>
 </resources>

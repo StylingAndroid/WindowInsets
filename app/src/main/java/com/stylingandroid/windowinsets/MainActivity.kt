@@ -33,8 +33,10 @@ class MainActivity : AppCompatActivity() {
 
         val itemTypes = listOf(
             binding.toggleCaptionBar,
+            binding.toggleDisplayCutout,
             binding.toggleIme,
             binding.toggleMandatorySystemGestures,
+            binding.toggleNavigationBars,
             binding.toggleStatusBars,
             binding.toggleSystemBars,
             binding.toggleSystemGestures,
@@ -57,8 +59,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.toggleCaptionBar.addChangeListener(Type.captionBar())
+        binding.toggleDisplayCutout.addChangeListener(Type.displayCutout())
         binding.toggleIme.addChangeListener(Type.ime())
         binding.toggleMandatorySystemGestures.addChangeListener(Type.mandatorySystemGestures())
+        binding.toggleNavigationBars.addChangeListener(Type.navigationBars())
         binding.toggleStatusBars.addChangeListener(Type.statusBars())
         binding.toggleSystemBars.addChangeListener(Type.systemBars())
         binding.toggleSystemGestures.addChangeListener(Type.systemGestures())
